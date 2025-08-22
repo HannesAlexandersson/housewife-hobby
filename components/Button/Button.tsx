@@ -26,9 +26,12 @@ const button = cva(
           "text-tertiaryTextClr",
           "border-transparent",
         ],
+        outlinedSecondary:
+          "bg-transparent border-2 border-white text-white hover:bg-white hover:text-black",
         ghost:
           "bg-transparent text-secondaryTextClr border-none hover:text-linkHoverClr hover:text-shadow-2xs",
       },
+
       size: {
         small: ["text-sm", "py-1", "px-2"],
         medium: ["text-base", "py-2", "px-4"],
