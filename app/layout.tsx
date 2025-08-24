@@ -1,3 +1,4 @@
+import FloatingElements from "@/components/FloatingElements/FloatingElements";
 import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import LivePreviewProvider from "@/context/LivePreviewProvider";
@@ -8,14 +9,14 @@ import { draftMode } from "next/headers";
 import Script from "next/script";
 import "./globals.css";
 
-const rowdies = Questrial({
+const questrial = Questrial({
   variable: "--font-rowdies",
   subsets: ["latin"],
   weight: ["400"],
 });
 
-const sans = Inter({
-  variable: "--font-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["500", "700", "800"],
 });
@@ -35,13 +36,13 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sans.variable} ${rowdies.variable} antialiased`}
+      className={`${inter.variable} ${questrial.variable} antialiased`}
     >
       <body>
         <MenuContextProvider>
           <LivePreviewProvider isEnabled={isEnabled}>
             <Navbar />
-            {children}
+            <FloatingElements>{children}</FloatingElements>
             <Footer />
           </LivePreviewProvider>
         </MenuContextProvider>

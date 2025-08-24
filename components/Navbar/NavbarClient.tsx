@@ -93,13 +93,13 @@ const Navbar: React.FC<NavbarProps> = ({
     <>
       <div
         className={cn(
-          "fixed inset-0 z-30 flex h-20 select-none items-center justify-between overflow-y-visible bg-transparent px-6 text-white transition-all duration-300 xl:px-16",
+          "fixed top-0 left-0 right-0 z-99 flex h-20 select-none items-center justify-between overflow-y-visible bg-transparent px-6 text-white transition-all duration-300 xl:px-16",
           { "opacity-0": !isNavDown },
           { "bg-white bg-opacity-90 shadow-bottom": withBg || isNavBellow() },
           { "bg-black": variant === "dark" }
         )}
       >
-        <Link href={"/"}>
+        <Link href={"/"} className="relative">
           <Image
             src={logo.navbarLogotype?.url ?? ""}
             alt={logo.navbarLogotype?.title || "Mormor&jag Logo"}

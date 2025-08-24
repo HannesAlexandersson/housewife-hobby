@@ -1,29 +1,23 @@
 "use client";
 
 import { Button } from "@/components/Button/Button";
-import Skeleton from "@/components/Skeleton/Skeleton";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { HeroData } from "./Hero.types";
 
 const Hero = ({ heroData }: { heroData: HeroData[] }) => {
-  const router = useRouter();
-
   return (
-    <section className="relative h-screen bg-black/30 object-cover">
+    <section className="relative h-screen w-screen object-cover">
       <Image
-        className="absolute -z-10"
+        className="object-cover"
         src={heroData[0].heroImage.url}
         alt={heroData[0].heroImage.title || "Hero image"}
-        quality={100}
         fill={true}
         sizes="100vw"
-        style={{
-          objectFit: "cover",
-        }}
-        priority={true}
+        priority={false}
+        style={{ objectFit: "cover", objectPosition: "center" }}
       />
+
       <div className="mx-auto flex h-full max-w-[1440px] items-end justify-center px-6 pb-24 sm:items-center sm:pb-0 sm:pt-24">
         <div className="flex flex-col items-center gap-12 text-center text-annika-pink">
           <div className="flex flex-col items-center gap-2 md:gap-4">
@@ -41,10 +35,6 @@ const Hero = ({ heroData }: { heroData: HeroData[] }) => {
       </div>
     </section>
   );
-};
-
-export const HeroSkeleton = () => {
-  return <Skeleton className="h-screen" />;
 };
 
 export default Hero;

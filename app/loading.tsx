@@ -1,5 +1,4 @@
-import { HeroSkeleton } from "@/components/Hero/Hero";
-import Skeleton from "@/components/Skeleton/Skeleton";
+import Skeleton, { HeroSkeleton } from "@/components/Skeleton/Skeleton";
 
 const loading = () => {
   return (

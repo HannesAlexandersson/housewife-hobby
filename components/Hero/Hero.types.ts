@@ -1,6 +1,8 @@
 export interface HeroData {
+  sys?: { id: string };
   heroTitle: string;
   heroImage: {
+    sys?: { id: string };
     url: string;
     title?: string;
   };

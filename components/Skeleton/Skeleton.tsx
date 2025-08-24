@@ -14,4 +14,8 @@ const Skeleton = ({ className, dark = false, ...props }: SkeletonProps) => {
   );
 };
 
+export const HeroSkeleton = () => {
+  return <Skeleton className="h-screen" />;
+};
+
 export default Skeleton;

@@ -1,5 +1,13 @@
 import { Document as RichTextDocument } from "@contentful/rich-text-types";
 
+export interface BlockProps {
+  sys?: ContentfulSys;
+  sectionTitle?: string;
+  sectionText?: { json: RichTextDocument };
+  sectionImage?: ImageProps;
+  order: number;
+}
+
 export interface HeroDataProps {
   heroTitleFirst: string;
   heroTitleSecond: string;
