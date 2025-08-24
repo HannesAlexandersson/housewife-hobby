@@ -1,15 +1,11 @@
 import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
-/* import apolloClient from "@/lib/apolloClient";
-import previewClient from "@/lib/previewClient";
-import { GET_HERO_DATA } from "@/querys"; */
-import type { Metadata } from "next";
-import { Inter, Questrial } from "next/font/google";
-/* import { draftMode } from "next/headers"; */
-import MenuList from "@/components/Navbar/NavbarClient";
 import LivePreviewProvider from "@/context/LivePreviewProvider";
 import { MenuContextProvider } from "@/context/menuContextProvider";
+import type { Metadata } from "next";
+import { Inter, Questrial } from "next/font/google";
 import { draftMode } from "next/headers";
+import Script from "next/script";
 import "./globals.css";
 
 const rowdies = Questrial({
@@ -35,12 +31,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const { isEnabled } = await draftMode();
-  /*   const client = isEnabled ? previewClient : apolloClient;
 
-  const { data: textData } = await client.query({
-    query: GET_HERO_DATA,
-    variables: { preview: isEnabled },
-  }); */
   return (
     <html
       lang="en"
@@ -48,7 +39,6 @@ export default async function RootLayout({
     >
       <body>
         <MenuContextProvider>
-          <MenuList />
           <LivePreviewProvider isEnabled={isEnabled}>
             <Navbar />
             {children}
@@ -56,6 +46,7 @@ export default async function RootLayout({
           </LivePreviewProvider>
         </MenuContextProvider>
       </body>
+      {isEnabled && <Script src="/live-preview.mjs" />}
     </html>
   );
 }

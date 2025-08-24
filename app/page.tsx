@@ -12,7 +12,7 @@ export default async function Home() {
     query: GET_HERO_DATA,
     variables: { preview: isEnabled },
   });
-  console.log("heroData", data);
+
   const landingHeroData = data?.heroSectionCollection?.items || [];
   return (
     <main className="">

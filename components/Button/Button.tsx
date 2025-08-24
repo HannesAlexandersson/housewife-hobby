@@ -30,6 +30,7 @@ const button = cva(
           "bg-transparent border-2 border-white text-white hover:bg-white hover:text-black",
         ghost:
           "bg-transparent text-secondaryTextClr border-none hover:text-linkHoverClr hover:text-shadow-2xs",
+        empty: "",
       },
 
       size: {

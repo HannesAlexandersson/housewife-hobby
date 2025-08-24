@@ -1,10 +1,10 @@
 "use client";
 
 import { Button } from "@/components/Button/Button";
+import Skeleton from "@/components/Skeleton/Skeleton";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Skeleton from "../Skeleton/Skeleton";
 import { HeroData } from "./Hero.types";
 
 const Hero = ({ heroData }: { heroData: HeroData[] }) => {
