@@ -24,7 +24,7 @@ const Hero = ({ heroData }: { heroData: HeroData[] }) => {
           <div className="flex flex-col items-center gap-2 md:gap-4">
             <Typography
               variant="h1"
-              className="font-secondaryFont text-4xl sm:text-5xl lg:text-8xl"
+              className="font-secondaryFont text-5xl lg:text-8xl"
             >
               {heroData[0].heroTitle}
             </Typography>

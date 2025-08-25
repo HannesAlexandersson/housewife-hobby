@@ -115,10 +115,13 @@ const Navbar: React.FC<NavbarProps> = ({
     <>
       <div
         className={cn(
-          "fixed inset-0 z-30 flex h-20 select-none items-center justify-between overflow-y-visible bg-transparent px-6 text-white transition-all duration-300 xl:px-16",
-          { "opacity-0": !isNavDown },
-          { "bg-white bg-opacity-90 shadow-bottom": withBg || isNavBellow() },
-          { "bg-black": variant === "dark" }
+          "fixed top-0 left-0 right-0 z-30 flex h-20 select-none items-center justify-between px-6 transition-all duration-300 xl:px-16",
+          {
+            "opacity-0": !isNavDown,
+            "bg-transparent text-white": !isPastHero,
+            "bg-white/90 text-black shadow-bottom": isPastHero,
+            "bg-black text-white": variant === "dark",
+          }
         )}
       >
         <Link href={"/"} className="relative">

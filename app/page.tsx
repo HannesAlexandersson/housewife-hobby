@@ -5,7 +5,6 @@ import previewClient from "@/lib/previewClient";
 import { GET_HERO_DATA, GET_LANDINGPAGE_DATA } from "@/querys";
 import { DocumentNode } from "@/utils/globalTypes";
 import { draftMode } from "next/headers";
-import Image from "next/image";
 import {
   HeroSectionCollection,
   LandingHeroData,
