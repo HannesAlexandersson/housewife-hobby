@@ -1,6 +1,7 @@
 import FloatingElements from "@/components/FloatingElements/FloatingElements";
 import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
+import { ApolloWrapper } from "@/context/ApolloContext";
 import LivePreviewProvider from "@/context/LivePreviewProvider";
 import { MenuContextProvider } from "@/context/menuContextProvider";
 import type { Metadata } from "next";
@@ -41,9 +42,11 @@ export default async function RootLayout({
       <body>
         <MenuContextProvider>
           <LivePreviewProvider isEnabled={isEnabled}>
-            <Navbar />
-            <FloatingElements>{children}</FloatingElements>
-            <Footer />
+            <ApolloWrapper>
+              <Navbar />
+              <FloatingElements>{children}</FloatingElements>
+              <Footer />
+            </ApolloWrapper>
           </LivePreviewProvider>
         </MenuContextProvider>
       </body>
