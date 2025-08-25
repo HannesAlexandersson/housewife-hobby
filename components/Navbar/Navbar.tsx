@@ -1,24 +1,23 @@
-import NavbarClient from './NavbarClient';
-import { sanityFetch } from "@/sanity/client";
-import { getNavbarLogo } from "@/sanity/querys";
-
-interface NavbarProps {    
-    logo: string
-    alt: string
-    withBg?: boolean;
-    variant?: 'dark' | 'light';
-  }
-
-  interface NavProps {
-    hero: NavbarProps;
-  }
+import apolloClient from "@/lib/apolloClient";
+import previewClient from "@/lib/previewClient";
+import { GET_NAVBAR_DATA } from "@/querys";
+import { draftMode } from "next/headers";
+import NavbarClient from "./NavbarClient";
 
 const Navbar = async () => {
-    const logo = await sanityFetch<NavbarProps[]>({ query: getNavbarLogo});
-   
+  const { isEnabled } = await draftMode();
+  const client = isEnabled ? previewClient : apolloClient;
+
+  const { data } = await client.query({
+    query: GET_NAVBAR_DATA,
+    variables: { preview: isEnabled },
+  });
+
+  const logo = data?.navbarLogotypeCollection?.items || [];
+
   return (
     <div>
-      <NavbarClient logo={logo[0]} withBg={false} variant='light'/>
+      <NavbarClient logo={logo[0]} withBg={false} variant="light" />
     </div>
   );
 };
@@ -26,9 +25,13 @@ const Navbar = async () => {
 export const NavbarSkeleton = () => {
   return (
     <div>
-      <NavbarClient logo={{logo: '', alt: ''}} withBg={false} variant='light'/>
+      <NavbarClient
+        logo={{ navbarLogotype: { url: "", title: "" } }}
+        withBg={false}
+        variant="light"
+      />
     </div>
   );
-}
+};
 
 export default Navbar;
