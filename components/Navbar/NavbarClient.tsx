@@ -152,7 +152,7 @@ const Navbar: React.FC<NavbarProps> = ({
         </Button>
       </div>
       {showMenu && (
-        <div className="fixed inset-0 z-20 flex flex-col items-center justify-center bg-black bg-opacity-50 p-4">
+        <div className="fixed inset-0 z-20 flex flex-col items-center justify-center bg-black/50 p-4">
           {pageLinks.map((link, index) => (
             <div
               key={link.path}
