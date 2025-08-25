@@ -1,4 +1,7 @@
+import { DocumentNode } from "@apollo/client";
 import { Document as RichTextDocument } from "@contentful/rich-text-types";
+
+export type { DocumentNode };
 
 export interface BlockProps {
   sys?: ContentfulSys;

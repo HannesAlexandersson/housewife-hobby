@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar/Navbar";
 import { ApolloWrapper } from "@/context/ApolloContext";
 import LivePreviewProvider from "@/context/LivePreviewProvider";
 import { MenuContextProvider } from "@/context/menuContextProvider";
+/* import apolloClient from "@/lib/apolloClient";
+import previewClient from "@/lib/previewClient"; */
 import type { Metadata } from "next";
 import { Inter, Questrial } from "next/font/google";
 import { draftMode } from "next/headers";
@@ -33,6 +35,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const { isEnabled } = await draftMode();
+  //const client = isEnabled ? previewClient : apolloClient;
 
   return (
     <html

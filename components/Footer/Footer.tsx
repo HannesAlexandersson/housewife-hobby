@@ -6,19 +6,25 @@ import { draftMode } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 
+interface FooterQueryProps {
+  footerSectionCollection: {
+    items: FooterDataProps[];
+  };
+}
+
 interface FooterDataProps {
   logo: {
     url: string;
     title?: string;
   };
-  title?: string; // optional, if you need it
+  title?: string;
 }
 
 const Footer = async () => {
   const { isEnabled } = await draftMode();
   const client = isEnabled ? previewClient : apolloClient;
 
-  const { data } = await client.query({
+  const { data } = await client.query<FooterQueryProps>({
     query: GET_FOOTER_DATA,
     variables: { preview: isEnabled },
   });
@@ -31,13 +37,16 @@ const Footer = async () => {
   return (
     <footer className="flex flex-col border-t-2 border-annika-pink bg-annika-cream px-2 py-6 text-annika-blue">
       <div className="flex flex-1 flex-col items-center justify-start gap-4 pt-6">
-        <div className="flex h-auto w-auto flex-1 flex-col items-center justify-start gap-1">
-          <Image
-            src={footerData[0]?.logo.url ?? ""}
-            alt={footerData[0]?.logo.title ?? "Footer logo"}
-            width={175}
-            height={175}
-          />
+        <div className="relative flex h-auto w-auto flex-1 flex-col items-center justify-start gap-1">
+          <Link href={"/"} className="relative">
+            <Image
+              src={footerData[0]?.logo.url ?? ""}
+              alt={footerData[0]?.logo.title ?? "Footer logo"}
+              width={175}
+              height={175}
+              className="hover:cursor-pointer"
+            />
+          </Link>
         </div>
         <div className="flex flex-row justify-center gap-5 pb-10 pt-2">
           <Link href="#" target="_blank" rel="noreferrer">

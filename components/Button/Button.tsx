@@ -1,58 +1,59 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
-const button = cva(
-  ["font-semibold", "border", "rounded", "hover:cursor-pointer"],
-  {
-    variants: {
-      variant: {
-        primary: [
-          "bg-primaryAccent",
-          "text-background",
-          "border-transparent",
-          "hover:bg-background",
-          "hover:text-primaryAccent",
-          "hover:border-primaryAccent",
-        ],
-        secondary: [
-          "bg-background",
-          "text-backgroundDark",
-          "border-backgroundDark",
-          "hover:bg-backgroundDark",
-          "hover:text-primaryTextClrDark",
-        ],
-        navbar: [
-          "bg-transparent",
-          "text-tertiaryTextClr",
-          "border-transparent",
-        ],
-        outlinedSecondary:
-          "bg-transparent border-2 border-white text-white hover:bg-white hover:text-black",
-        ghost:
-          "bg-transparent text-secondaryTextClr border-none hover:text-linkHoverClr hover:text-shadow-2xs",
-        empty: "",
-      },
-
-      size: {
-        small: ["text-sm", "py-1", "px-2"],
-        medium: ["text-base", "py-2", "px-4"],
-        large: ["text-lg", "py-3", "px-6"],
-        none: ["text-base", "py-0", "px-0"],
-      },
-      // `boolean` variants are also supported!
-      disabled: {
-        false: null,
-        true: ["opacity-50", "cursor-not-allowed"],
-      },
+const button = cva([""], {
+  variants: {
+    variant: {
+      primary: [
+        "font-semibold",
+        "border",
+        "rounded",
+        "hover:cursor-pointer",
+        "bg-primaryAccent",
+        "text-background",
+        "border-transparent",
+        "hover:bg-background",
+        "hover:text-primaryAccent",
+        "hover:border-primaryAccent",
+      ],
+      secondary: [
+        "font-semibold",
+        "border",
+        "rounded",
+        "hover:cursor-pointer",
+        "bg-background",
+        "text-backgroundDark",
+        "border-backgroundDark",
+        "hover:bg-backgroundDark",
+        "hover:text-primaryTextClrDark",
+      ],
+      navbar: ["bg-transparent", "text-tertiaryTextClr", "border-transparent"],
+      outlinedSecondary:
+        "font-semibold rounded hover:cursor-pointer bg-transparent border-2 border-white text-white hover:bg-white hover:text-black",
+      ghost:
+        "bg-transparent text-secondaryTextClr border-none hover:text-linkHoverClr hover:text-shadow-2xs",
+      empty: "",
     },
 
-    defaultVariants: {
-      variant: "primary",
-      size: "medium",
-      disabled: false,
+    size: {
+      small: ["text-sm", "py-1", "px-2"],
+      medium: ["text-base", "py-2", "px-4"],
+      large: ["text-lg", "py-3", "px-6"],
+      none: ["text-base", "py-0", "px-0"],
     },
-  }
-);
+    // `boolean` variants are also supported!
+    disabled: {
+      false: null,
+      true: ["opacity-50", "cursor-not-allowed"],
+    },
+  },
+
+  defaultVariants: {
+    variant: "primary",
+    size: "medium",
+    disabled: false,
+  },
+});
 // Usage example:
 button();
 // => "font-semibold border rounded bg-blue-500 text-white border-transparent text-base py-2 px-4 hover:bg-blue-600 uppercase"

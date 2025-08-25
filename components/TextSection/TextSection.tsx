@@ -77,7 +77,7 @@ const TextBlock: React.FC<TextBlockProps> & {
       {showImage && block.sectionImage?.url && (
         <Image
           src={block.sectionImage.url}
-          alt="Bild för text blocket"
+          alt={block.sectionImage.title ?? "Bild för text blocket"}
           width={1760}
           height={993}
           style={{ width: "auto", height: "auto" }}

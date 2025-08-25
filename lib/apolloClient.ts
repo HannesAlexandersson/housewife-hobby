@@ -1,4 +1,4 @@
-import { HttpLink } from "@apollo/client";
+/* import { HttpLink } from "@apollo/client";
 import {
   ApolloClient,
   InMemoryCache,
@@ -18,9 +18,9 @@ export const { getClient, query, PreloadQuery } = registerApolloClient(() => {
       },
     }),
   });
-});
+}); */
 
-/* import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 
 const apolloClient = new ApolloClient({
   link: new HttpLink({
@@ -35,4 +35,4 @@ const apolloClient = new ApolloClient({
   },
 });
 
-export default apolloClient; */
+export default apolloClient;

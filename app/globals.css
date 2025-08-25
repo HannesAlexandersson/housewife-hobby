@@ -34,6 +34,9 @@
   --annika-orange: #ED6228;
   --annika-morang: #FBE2c4;
 
+  --background: var(--annika-pink);
+  --foreground: var(--black-500);
+
   --black-500: #1A1A1A;
   --white-500: #FFFFFF;
 
@@ -45,6 +48,19 @@
 
 @theme inline {
 
+  --color-annika-blue: var(--annika-blue);
+  --color-annika-lightBlue: var(--annika-lightBlue);
+  --color-annika-pink: var(--annika-pink);
+  --color-annika-lightGreen: var(--annika-lightGreen);
+  --color-annika-darkGreen: var(--annika-darkGreen);
+  --color-annika-cream: var(--annika-cream);
+  --color-annika-orange: var(--annika-orange);
+  --color-annika-morang: var(--annika-morang);
+  --color-black-500: var(--black-500);
+  --color-white-500: var(--white-500);
+  --color-red-500: var(--red-500);
+  --color-yellow-500: var(--yellow-500);
+  --color-grey-500: var(--grey-500);
 
   --color-background: var(--annika-pink);
   --color-foreground: var(--black-500);
@@ -54,10 +70,6 @@
   --font-primaryFont: var(--font-inter);
   --font-secondaryFont: var(--font-questrial);
 
-  --color-primaryText: var(--foreground);
-  --color-secondaryText: var(--background);
-  --color-primaryAccent: var(--primary-accent);
-  --color-secondaryAccent: var(--link-hoverClr);
 
   --color-warning: var(--yellow-500);
   --color-danger: var(--red-500);
@@ -72,8 +84,9 @@
 }
 
 body {
+  background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter);
+  font-family: var(--font-questrial);
 }
 
 @keyframes float {
@@ -198,6 +211,13 @@ body {
     padding-right: calc(var(--spacing) * 6);
   }
 
+  .frosted-glass {
+    background: rgba(255, 255, 255, 0.402);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+  }
+
 }
 
 @utility w-line-width {
@@ -239,10 +259,17 @@ body {
   width: calc(var(--spacing) * 5);
   transform-origin: right;
   border-radius: calc(infinity * 1px);
-  background-color: var(--primaryAccent);
+  background-color: var(--annika-pink);
   transition-property: all;
   transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
   transition-duration: var(--tw-duration, var(--default-transition-duration)
       /* 150ms */
     );
+}
+
+@utility frosted-glass {
+  background: rgba(255, 255, 255, 0.402);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
 }

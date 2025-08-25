@@ -49,7 +49,29 @@ const Navbar: React.FC<NavbarProps> = ({
     [showMenu, toggle]
   );
 
+  const [isPastHero, setIsPastHero] = useState(false);
+
   const handleScroll = React.useCallback(() => {
+    const { scrollY } = window;
+    const isScrollingDown = scrollY > scrollPos;
+    const isScrollingUp = scrollY < scrollPos;
+    const isPastThreshold = Math.abs(scrollY - scrollPos) > 5;
+
+    // update "past hero" state (independent of scroll direction)
+    setIsPastHero(scrollY > window.innerHeight / 3 - 50);
+
+    if (isNavDown && isScrollingDown && isPastThreshold) {
+      setIsNavDown(false);
+      if (showMenu) toggle(false);
+    }
+
+    if (isScrollingUp && isPastThreshold && !isNavDown) {
+      setIsNavDown(true);
+    }
+
+    setScrollPos(scrollY);
+  }, [scrollPos, isNavDown, showMenu, toggle]);
+  /* const handleScroll = React.useCallback(() => {
     const { scrollY } = window;
     const isScrollingDown = scrollY > scrollPos;
     const isScrollingUp = scrollY < scrollPos;
@@ -66,7 +88,7 @@ const Navbar: React.FC<NavbarProps> = ({
     }
 
     setScrollPos(scrollY);
-  }, [scrollPos, isNavDown, showMenu, toggle]);
+  }, [scrollPos, isNavDown, showMenu, toggle]); */
 
   useEffect(() => {
     if (isBrowser()) {
@@ -93,7 +115,7 @@ const Navbar: React.FC<NavbarProps> = ({
     <>
       <div
         className={cn(
-          "fixed top-0 left-0 right-0 z-99 flex h-20 select-none items-center justify-between overflow-y-visible bg-transparent px-6 text-white transition-all duration-300 xl:px-16",
+          "fixed inset-0 z-30 flex h-20 select-none items-center justify-between overflow-y-visible bg-transparent px-6 text-white transition-all duration-300 xl:px-16",
           { "opacity-0": !isNavDown },
           { "bg-white bg-opacity-90 shadow-bottom": withBg || isNavBellow() },
           { "bg-black": variant === "dark" }
@@ -105,12 +127,13 @@ const Navbar: React.FC<NavbarProps> = ({
             alt={logo.navbarLogotype?.title || "Mormor&jag Logo"}
             width={200 / 1.1}
             height={36 / 1.1}
+            className="max-w-[130px] md:max-w-none"
           />
         </Link>
         <Button
           onClick={handleToggle}
           className={cn(
-            "fixed right-6 top-10 z-99 flex h-10 w-10 -translate-y-1/2 flex-col items-center justify-center gap-1 p-0 transition-opacity duration-300 hover:bg-grey xl:right-16 bg-annika-pink text-annika-blue hover:bg-annika-cream",
+            "fixed right-6 top-10 z-99 flex h-10 w-10 -translate-y-1/2 flex-col items-center justify-center gap-1 p-0 transition-opacity duration-300 xl:right-16 bg-grey active:text-annika-blue hover:bg-annika-cream",
             {
               "bg-transparent hover:bg-transparent": !withBg && !isNavBellow(),
             },
