@@ -2,10 +2,21 @@ import Typography from "@/components/Typography/Typography";
 import { BLOCKS, INLINES, MARKS, Node } from "@contentful/rich-text-types";
 import Image from "next/image";
 import Link from "next/link";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 let keyCounter = 0;
 export const richTextOptions = {
+  renderText: (text: string) => {
+    return text
+      .split("\n")
+      .reduce<React.ReactNode[]>((children, textSegment, index) => {
+        return [
+          ...children,
+          index > 0 && <br key={`br-${index}`} />, // ✅ unique key
+          <React.Fragment key={`seg-${index}`}>{textSegment}</React.Fragment>, // ✅ unique key
+        ];
+      }, []);
+  },
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node: Node, children: ReactNode) => {
       const key = `paragraph-${keyCounter++}`;

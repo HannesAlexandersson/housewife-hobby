@@ -1,3 +1,4 @@
+import FloatingElements from "@/components/FloatingElements/FloatingElements";
 import Hero from "@/components/Hero/Hero";
 import TextBlock from "@/components/TextSection/TextSection";
 import apolloClient from "@/lib/apolloClient";
@@ -43,30 +44,34 @@ export default async function Home() {
   return (
     <>
       <main className="relative">
-        <div className="fixed inset-0 -z-10"></div>
+        {/* <div className="fixed inset-0 -z-10"></div> */}
         <Hero heroData={landingHeroData} />
         {sortedLandingPageData.map((section, index) => (
           <section
             key={index}
             className="section-contain w-full h-auto my-16 md:my-32"
           >
-            <div className="md:w-3/4 bg-white frosted-glass border border-gray-300 shadow-lg p-8 rounded-lg">
-              {section && (
-                <div className="flex flex-col md:flex-row w-full h-auto">
-                  <div className="flex-1 flex items-start justify-center">
-                    <div className="text-lg md:text-2xl">
-                      <TextBlock.Section
-                        key={section.order}
-                        className={"mx-auto max-w-[1440px] my-6 px-6 md:px-16"}
-                        reverse={section.order % 2 === 0 ? true : false}
-                      >
-                        <TextBlock block={section} showImage={true} />
-                      </TextBlock.Section>
+            <FloatingElements>
+              <div className="md:w-3/4 bg-white z-10 frosted-glass border border-gray-300 shadow-lg p-8 rounded-lg">
+                {section && (
+                  <div className="flex flex-col md:flex-row w-full h-auto">
+                    <div className="flex-1 flex items-start justify-center">
+                      <div className="text-lg md:text-2xl">
+                        <TextBlock.Section
+                          key={section.order}
+                          className={
+                            "mx-auto max-w-[1440px] my-6 px-6 md:px-16"
+                          }
+                          reverse={section.order % 2 === 0 ? true : false}
+                        >
+                          <TextBlock block={section} showImage={true} />
+                        </TextBlock.Section>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
+            </FloatingElements>
           </section>
         ))}
       </main>

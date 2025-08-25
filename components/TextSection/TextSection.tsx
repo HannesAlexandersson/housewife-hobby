@@ -44,7 +44,7 @@ const TextBlock: React.FC<TextBlockProps> & {
   return (
     <div
       className={cn(
-        'text-primaryText grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-5 md:group-data-[reverse="true"]:[&>div]:odd:order-2 md:[&>div]:even:order-2 md:group-data-[reverse="true"]:[&>div]:even:order-1 md:[&>img]:even:order-1',
+        'text-primaryText grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-5 md:gap-x-8 md:group-data-[reverse="true"]:[&>div]:odd:order-2 md:[&>div]:even:order-2 md:group-data-[reverse="true"]:[&>div]:even:order-1 md:[&>img]:even:order-1',
         { "text-light": variant === "dark", "text-dark": variant === "light" },
         className
       )}

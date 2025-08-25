@@ -1,25 +1,25 @@
 type PageLinkProps = {
-  title: string
-  path: string
-}[]
+  title: string;
+  path: string;
+}[];
 
 const pageLinks: PageLinkProps = [
   {
-    title: 'Hem',
-    path: '/',
+    title: "Hem",
+    path: "/",
   },
   {
-    title: 'Tjänster',
-    path: '/features',
+    title: "Galleri",
+    path: "/gallery",
   },
   {
-    title: 'Om oss',
-    path: '/about',
+    title: "Butik",
+    path: "/shop",
   },
   {
-    title: 'Kontakt',
-    path: '/contact',
+    title: "Kontakt",
+    path: "/contact",
   },
-]
+];
 
-export default pageLinks
+export default pageLinks;

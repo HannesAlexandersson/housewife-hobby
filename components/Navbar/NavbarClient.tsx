@@ -136,7 +136,7 @@ const Navbar: React.FC<NavbarProps> = ({
         <Button
           onClick={handleToggle}
           className={cn(
-            "fixed right-6 top-10 z-99 flex h-10 w-10 -translate-y-1/2 flex-col items-center justify-center gap-1 p-0 transition-opacity duration-300 xl:right-16 bg-grey active:text-annika-blue hover:bg-annika-cream",
+            "fixed right-6 top-10 z-99 flex h-10 w-10 -translate-y-1/2 flex-col items-center justify-center gap-1 p-0 transition-opacity duration-300 xl:right-16 bg-grey active:text-annika-blue hover:bg-annika-cream hover:cursor-pointer",
             {
               "bg-transparent hover:bg-transparent": !withBg && !isNavBellow(),
             },
