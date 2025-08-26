@@ -19,15 +19,12 @@ export default async function Home() {
 
   const { data } = await client.query<HeroSectionCollection>({
     query: GET_HERO_DATA as DocumentNode,
-    variables: { preview: isEnabled },
+    variables: { preview: isEnabled, title: "Mormor och Jag" },
   });
 
   const landingHeroData: LandingHeroData[] =
     data?.heroSectionCollection?.items || [];
 
-  /* const showcaseItems: ShowcaseProps[] =
-    landingHeroData[0]?.showcaseCollection?.items || [];
-  console.log("showcaseItems in page:", showcaseItems); */
   const { data: landingData } = await client.query<LandingPageCollectionProps>({
     query: GET_LANDINGPAGE_DATA,
     variables: { preview: isEnabled },
