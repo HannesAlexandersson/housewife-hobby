@@ -25,6 +25,9 @@ export default async function Home() {
   const landingHeroData: LandingHeroData[] =
     data?.heroSectionCollection?.items || [];
 
+  /* const showcaseItems: ShowcaseProps[] =
+    landingHeroData[0]?.showcaseCollection?.items || [];
+  console.log("showcaseItems in page:", showcaseItems); */
   const { data: landingData } = await client.query<LandingPageCollectionProps>({
     query: GET_LANDINGPAGE_DATA,
     variables: { preview: isEnabled },
@@ -59,9 +62,7 @@ export default async function Home() {
                       <div className="text-lg md:text-2xl">
                         <TextBlock.Section
                           key={section.order}
-                          className={
-                            "mx-auto max-w-[1440px] my-6 px-6 md:px-16"
-                          }
+                          className={"mx-auto max-w-[1440px] my-6"}
                           reverse={section.order % 2 === 0 ? true : false}
                         >
                           <TextBlock block={section} showImage={true} />
