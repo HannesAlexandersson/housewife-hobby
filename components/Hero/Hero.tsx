@@ -4,20 +4,37 @@ import { Button } from "@/components/Button/Button";
 import Typography from "@/components/Typography/Typography";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { HeroData } from "./Hero.types";
 
 const Hero = ({ heroData }: { heroData: HeroData[] }) => {
+  const images = heroData[0]?.heroImagesCollection?.items ?? [];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // change image every 5s
+  useEffect(() => {
+    if (images.length <= 1) return; // nothing to cycle
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [images.length]);
   return (
     <section className="relative h-screen bg-black/30 object-cover">
-      <Image
-        className="absolute -z-10"
-        src={heroData[0].heroImage.url}
-        alt={heroData[0].heroImage.title || "Hero image"}
-        fill={true}
-        sizes="100vw"
-        priority={false}
-        style={{ objectFit: "cover", objectPosition: "center" }}
-      />
+      {images.map((img, i) => (
+        <Image
+          key={i}
+          className={`absolute -z-10 transition-opacity duration-1000 ${
+            i === currentIndex ? "opacity-100" : "opacity-0"
+          }`}
+          src={img.url}
+          alt={img.title || "Hero image"}
+          fill={true}
+          sizes="100vw"
+          priority={false}
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+      ))}
 
       <div className="mx-auto flex h-full max-w-[1440px] items-end justify-center px-6 pb-24 sm:items-center sm:pb-0 sm:pt-24">
         <div className="flex flex-col items-center gap-12 text-center text-annika-pink">

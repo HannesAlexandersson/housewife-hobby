@@ -7,7 +7,7 @@ const FloatingElements = ({
 }>) => {
   return (
     <section className="relative floating-elements-section">
-      <div className="absolute floating-elements">
+      <div className="floating-elements">
         <div className="floating-circle circle-1"></div>
         <div className="floating-circle circle-2"></div>
         <div className="floating-circle circle-3"></div>

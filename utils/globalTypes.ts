@@ -11,6 +11,20 @@ export interface BlockProps {
   order: number;
 }
 
+export type ShowcaseItem = {
+  id: string;
+  type: "Keramik" | "Textil";
+  title: string;
+  slug: string;
+  beskrivning: string;
+  category: string[];
+  pris: string;
+  image: {
+    url: string;
+    title: string;
+  };
+};
+
 export interface HeroDataProps {
   heroTitleFirst: string;
   heroTitleSecond: string;

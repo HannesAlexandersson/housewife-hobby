@@ -4,11 +4,29 @@ export interface HeroSectionCollection {
   heroSectionCollection: {
     items: LandingHeroData[];
   };
+  showcaseCollection?: {
+    items: ShowcaseProps[];
+  };
+}
+export interface ShowcaseProps {
+  sys: { id: string };
+  __typename: string;
+  title: string;
+  slug: string;
+  beskrivning: string;
+  category: string;
+  pris: number;
+  image: { url: string; title: string };
 }
 
 export interface LandingHeroData {
   heroTitle: string;
-  heroImage: { sys?: { id: string }; url: string; title?: string };
+  heroImagesCollection: {
+    items: {
+      url: string;
+      title: string;
+    }[];
+  };
 }
 
 export interface LandingPageCollectionProps {
