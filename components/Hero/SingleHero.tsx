@@ -35,7 +35,7 @@ const SingleHero = ({
             >
               {heroData.heroTitle}
             </Typography>
-            <article className="font-questrial text-white-500 flex flex-col gap-4">
+            <article className="font-questrial text-white-500 flex flex-col gap-4 text-shadow-lg text-2xl md:text-3xl max-w-4xl">
               {textData &&
                 documentToReactComponents(textData.json, richTextOptions)}
             </article>

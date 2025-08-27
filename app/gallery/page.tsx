@@ -1,12 +1,20 @@
 import FloatingElements from "@/components/FloatingElements/FloatingElements";
+import GalleryDisplay from "@/components/GalleryDisplay/GalleryDisplay";
 import SingleHero from "@/components/Hero/SingleHero";
-import TextBlock from "@/components/TextSection/TextSection";
 import apolloClient from "@/lib/apolloClient";
 import previewClient from "@/lib/previewClient";
-import { GET_GALLERY_DATA, GET_SINGLE_HERO_DATA } from "@/querys";
+import {
+  GET_GALLERY_DATA,
+  GET_GALLERY_IMAGES,
+  GET_SINGLE_HERO_DATA,
+} from "@/querys";
 import { DocumentNode } from "@apollo/client";
 import { draftMode } from "next/headers";
-import { GalleryDataProps, SingleHeroDataProps } from "./gallery.types";
+import {
+  GalleryDataProps,
+  GalleryImageDataProps,
+  SingleHeroDataProps,
+} from "./gallery.types";
 
 const galleryPage = async () => {
   const { isEnabled } = await draftMode();
@@ -35,13 +43,23 @@ const galleryPage = async () => {
       order: item.order,
     }));
 
+  const { data: galleryImagesData } = await client.query<GalleryImageDataProps>(
+    {
+      query: GET_GALLERY_IMAGES,
+      variables: { preview: isEnabled },
+    }
+  );
+  const galleryImages = galleryImagesData?.galleryImagesCollection?.items || [];
+
   return (
-    <main className="relative">
+    <main>
       <SingleHero
         heroData={galleryHeroData[0]}
         textData={sortedGalleryData[0].sectionText}
       />
-      <FloatingElements>kategories coming soon...</FloatingElements>
+      <FloatingElements>
+        <GalleryDisplay imageData={galleryImages} />
+      </FloatingElements>
     </main>
   );
 };
