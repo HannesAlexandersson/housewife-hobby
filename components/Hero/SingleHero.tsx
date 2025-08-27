@@ -1,10 +1,19 @@
 "use client";
 
+import { richTextOptions } from "@/components/RichTextOptions/RichTextOptions";
 import Typography from "@/components/Typography/Typography";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { Document as RichTextDocument } from "@contentful/rich-text-types";
 import Image from "next/image";
 import { SingleHeroData } from "./Hero.types";
 
-const SingleHero = ({ heroData }: { heroData: SingleHeroData }) => {
+const SingleHero = ({
+  heroData,
+  textData,
+}: {
+  heroData: SingleHeroData;
+  textData: { json: RichTextDocument };
+}) => {
   return (
     <section className="relative h-screen bg-black/30 object-cover">
       <Image
@@ -22,10 +31,14 @@ const SingleHero = ({ heroData }: { heroData: SingleHeroData }) => {
           <div className="flex flex-col items-center gap-2 md:gap-4">
             <Typography
               variant="h1"
-              className="font-secondaryFont text-5xl lg:text-8xl"
+              className="font-inter text-5xl lg:text-8xl"
             >
               {heroData.heroTitle}
             </Typography>
+            <article className="font-questrial text-white-500 flex flex-col gap-4">
+              {textData &&
+                documentToReactComponents(textData.json, richTextOptions)}
+            </article>
           </div>
         </div>
       </div>
