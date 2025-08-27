@@ -45,6 +45,12 @@ const Hero = ({ heroData }: { heroData: HeroData[] }) => {
             >
               {heroData[0].heroTitle}
             </Typography>
+            <Typography
+              variant="p"
+              className="text-white-500 font-questrial text-lg"
+            >
+              Keramik och textil hantverk
+            </Typography>
           </div>
 
           <Link href="/gallery">

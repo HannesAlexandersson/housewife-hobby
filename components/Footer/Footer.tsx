@@ -42,23 +42,30 @@ const Footer = async () => {
         <div>
           <FooterClient />
         </div>
-        <div className="flex flex-1 flex-col md:flex-row items-center justify-start gap-4 pt-6">
-          <div className="relative flex h-auto w-auto flex-1 flex-col items-center justify-start gap-1">
-            <Link href={"/"} className="relative">
-              <Image
-                src={footerData[0]?.logo.url ?? ""}
-                alt={footerData[0]?.logo.title ?? "Footer logo"}
-                width={175}
-                height={175}
-                className="hover:cursor-pointer"
-              />
-            </Link>
-          </div>
+        <div className="flex flex-col md:flex-row items-center justify-around gap-4 pt-6 px-4">
+          <Link href={"/"} className="relative">
+            <Image
+              src={footerData[0]?.logo.url ?? ""}
+              alt={footerData[0]?.logo.title ?? "Footer logo"}
+              width={175}
+              height={175}
+              className="hover:cursor-pointer"
+            />
+          </Link>
+
+          <Typography size="sm" className="text-center">
+            &copy; {new Date().getFullYear()} Mormor&Jag. All rights reserved.
+          </Typography>
+
           <div className="flex flex-row justify-center gap-5 pb-10 pt-2 md:pb-0 md:pt-0">
             <Link href="#" target="_blank" rel="noreferrer">
               <Icon name="facebook" size={28} strokeWidth={1} />
             </Link>
-            <Link href="#" target="_blank" rel="noreferrer">
+            <Link
+              href="https://www.instagram.com/mormorochjag/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Icon name="instagram" size={28} strokeWidth={1} />
             </Link>
 
@@ -77,21 +84,15 @@ const Footer = async () => {
               <Icon name="github" size={28} strokeWidth={1} />
             </Link>
           </div>
-          <div className="flex flex-1 flex-col items-center justify-end gap-4">
-            <h4>
-              This page is powered by{" "}
-              <Link href="https://minimalist-elegance.vercel.app/">
-                <span className="text-annika-lightGreen hover:text-annika-darkGreen">
-                  Alexander&son
-                </span>
-              </Link>
-            </h4>
-          </div>
-          <div className="flex flex-1 flex-col items-center justify-end gap-4">
-            <Typography size="sm" className="text-center">
-              &copy; {new Date().getFullYear()} Mormor&Jag. All rights reserved.
-            </Typography>
-          </div>
+
+          <h4>
+            This page is powered by{" "}
+            <Link href="https://minimalist-elegance.vercel.app/">
+              <span className="text-annika-lightGreen hover:text-annika-darkGreen">
+                Alexander&son
+              </span>
+            </Link>
+          </h4>
         </div>
       </footer>
     </>

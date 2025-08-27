@@ -1,8 +1,12 @@
 import { gql } from "@apollo/client";
 
 export const GET_HERO_DATA = gql`
-  query getData($preview: Boolean) {
-    heroSectionCollection(limit: 5, preview: $preview) {
+  query getData($preview: Boolean, $title: String) {
+    heroSectionCollection(
+      limit: 5
+      preview: $preview
+      where: { heroTitle: $title }
+    ) {
       items {
         sys {
           id

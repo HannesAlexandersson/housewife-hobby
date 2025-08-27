@@ -28,9 +28,12 @@ export default function Error({
             om sidan med knappen eller återgå till startsidan.
           </p>
           <div className="mt-8 flex w-full flex-col gap-4 sm:flex-row">
-            <Button variant="secondary" className="grow text-center">
-              <Link href={"/"}>Gå tillbaka hem</Link>
-            </Button>
+            <Link href={"/"}>
+              {" "}
+              <Button variant="secondary" className="grow text-center">
+                Gå tillbaka hem
+              </Button>
+            </Link>
             <Button
               variant="secondary"
               className={"grow"}
