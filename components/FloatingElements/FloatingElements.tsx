@@ -6,7 +6,7 @@ const FloatingElements = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <section className="relative floating-elements-section">
+    <section className="relative floating-elements-section max-w-full overflow-hidden">
       <div className="floating-elements">
         <div className="floating-circle circle-1"></div>
         <div className="floating-circle circle-2"></div>

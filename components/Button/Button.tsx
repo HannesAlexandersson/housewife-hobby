@@ -35,8 +35,10 @@ const button = cva([""], {
       ghost:
         "bg-transparent text-secondaryTextClr border-none hover:text-linkHoverClr hover:text-shadow-2xs",
       category:
-        "rounded-md shadow-lg shadow-gray-600 flex items-center justify-center flex-1 bg-annika-pink h-48 p-1 border-none text-annika-orange text-4xl hover:bg-annika-orange hover:text-annika-pink transition-colors font-bold uppercase break-words cursor-pointer hover:shadow-xl hover-transition-shadow hover:transform hover:scale-[1.02]",
+        "rounded-md shadow-lg shadow-gray-600 flex items-center justify-center flex-1 bg-annika-pink h-36 p-1 border-none text-annika-orange text-4xl hover:bg-annika-orange hover:text-annika-pink transition-colors font-bold uppercase break-words cursor-pointer hover:shadow-xl hover-transition-shadow hover:transform hover:scale-[1.02]",
       empty: "",
+      categoryOutline:
+        "rounded-md shadow-lg shadow-gray-600 flex items-center justify-center flex-1 bg-annika-pink h-36 p-1 border-none text-annika-orange text-4xl hover:bg-annika-orange hover:text-annika-pink transition-colors font-bold uppercase break-words cursor-pointer hover:shadow-xl hover-transition-shadow hover:transform hover:scale-[1.02] ring-1 ring-annika-blue",
     },
 
     size: {
