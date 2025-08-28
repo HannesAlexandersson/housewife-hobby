@@ -1,4 +1,4 @@
-import { SvgIconComponent } from '@mui/icons-material'
+/* import { SvgIconComponent } from '@mui/icons-material'
 
 export async function getIcon(name: string) {
   const iconImportName = name + 'Icon'
@@ -14,3 +14,4 @@ export async function getIcon(name: string) {
 
   return icon as SvgIconComponent
 }
+ */
