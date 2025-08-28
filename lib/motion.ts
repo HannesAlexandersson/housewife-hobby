@@ -1,26 +1,26 @@
-import { Variants } from 'framer-motion'
+import { AnimationGeneratorType, Variants } from "framer-motion";
 
 export interface Variant {
   hidden: {
-    x?: number | string
-    y?: number | string
-    opacity?: number
-    scale?: number
-  }
+    x?: number | string;
+    y?: number | string;
+    opacity?: number;
+    scale?: number;
+  };
   show: {
-    x?: number | string
-    y?: number | string
-    opacity?: number
-    scale?: number
+    x?: number | string;
+    y?: number | string;
+    opacity?: number;
+    scale?: number;
     transition: {
-      type?: string
-      duration?: number
-      delay?: number
-      ease?: string
-      staggerChildren?: number
-      delayChildren?: number
-    }
-  }
+      type?: string;
+      duration?: number;
+      delay?: number;
+      ease?: string;
+      staggerChildren?: number;
+      delayChildren?: number;
+    };
+  };
 }
 
 export const textVariant = (delay: number): Variants => {
@@ -33,24 +33,24 @@ export const textVariant = (delay: number): Variants => {
       y: 0,
       opacity: 1,
       transition: {
-        type: 'spring',
+        type: "spring",
         duration: 1.25,
         delay: delay,
       },
     },
-  }
-}
+  };
+};
 
 export const fadeIn = (
-  direction: 'left' | 'right' | 'up' | 'down' | '',
-  type: string,
+  direction: "left" | "right" | "up" | "down" | "",
+  type: AnimationGeneratorType | undefined,
   delay: number,
-  duration: number,
+  duration: number
 ): Variants => {
   return {
     hidden: {
-      x: direction === 'left' ? 100 : direction === 'right' ? -100 : 0,
-      y: direction === 'up' ? 100 : direction === 'down' ? -100 : 0,
+      x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
+      y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
       opacity: 0,
     },
     show: {
@@ -61,11 +61,11 @@ export const fadeIn = (
         type: type,
         delay: delay,
         duration: duration,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     },
-  }
-}
+  };
+};
 
 export const zoomIn = (delay: number, duration: number): Variant => {
   return {
@@ -77,25 +77,25 @@ export const zoomIn = (delay: number, duration: number): Variant => {
       scale: 1,
       opacity: 1,
       transition: {
-        type: 'tween',
+        type: "tween",
         delay: delay,
         duration: duration,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     },
-  }
-}
+  };
+};
 
 export const slideIn = (
-  direction: 'left' | 'right' | 'up' | 'down',
+  direction: "left" | "right" | "up" | "down",
   type: string,
   delay: number,
-  duration: number,
+  duration: number
 ): Variant => {
   return {
     hidden: {
-      x: direction === 'left' ? '-100%' : direction === 'right' ? '100%' : 0,
-      y: direction === 'up' ? '100%' : direction === 'down' ? '100%' : 0,
+      x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
+      y: direction === "up" ? "100%" : direction === "down" ? "100%" : 0,
     },
     show: {
       x: 0,
@@ -104,15 +104,15 @@ export const slideIn = (
         type: type,
         delay: delay,
         duration: duration,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     },
-  }
-}
+  };
+};
 
 export const staggerContainer = (
   staggerChildren: number,
-  delayChildren?: number,
+  delayChildren?: number
 ): Variant => {
   return {
     hidden: {},
@@ -122,5 +122,5 @@ export const staggerContainer = (
         delayChildren: delayChildren || 0,
       },
     },
-  }
-}
+  };
+};
