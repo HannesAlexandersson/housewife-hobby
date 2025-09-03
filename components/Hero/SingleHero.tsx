@@ -5,6 +5,8 @@ import Typography from "@/components/Typography/Typography";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Document as RichTextDocument } from "@contentful/rich-text-types";
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "../Button/Button";
 import { SingleHeroData } from "./Hero.types";
 
 const SingleHero = ({
@@ -39,6 +41,15 @@ const SingleHero = ({
               {textData &&
                 documentToReactComponents(textData.json, richTextOptions)}
             </article>
+            {heroData.heroBtnText && heroData.btnLink && (
+              <Link href={heroData.btnLink} target="_blank" rel="noreferrer">
+                <Button className="mt-4 rounded-full border-2 border-annika-pink bg-black/30 px-6 py-3 font-inter text-lg text-annika-pink transition hover:bg-annika-pink hover:text-black md:px-8 md:py-4 md:text-xl">
+                  <Typography variant="p" className="uppercase">
+                    {heroData.heroBtnText}
+                  </Typography>
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </div>
