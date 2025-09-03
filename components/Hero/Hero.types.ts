@@ -15,6 +15,8 @@ export interface SingleHeroData {
     url: string;
     title: string;
   };
+  heroBtnText?: string;
+  btnLink?: string;
 }
 export interface HeroProps {
   hero: HeroData;
