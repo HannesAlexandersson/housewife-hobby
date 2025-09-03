@@ -16,6 +16,8 @@ export const GET_SINGLE_HERO_DATA = gql`
           title
           url
         }
+        heroBtnText
+        btnLink
       }
     }
   }
